@@ -31,9 +31,11 @@ main() {
 }
 
 main
-echo ""
-echo "DONE"
 cd ~
-final=`awk '{ sum += $1 } END { print sum }' data.txt` # finds the sum of all numbers in "data.txt" together
-echo "$final seconds"
+secs=`awk '{ sum += $1 } END { print sum }' data.txt` # finds the sum of all numbers in "data.txt" together
+hrs=$((secs / 3600))
+mns=$((( secs / 60) % 60))
+scs=$((secs % 60))
+echo "(HH:MM:SS)"
+printf "%02d:%02d:%02d\n" $hrs $mns $scs
 rm data.txt
